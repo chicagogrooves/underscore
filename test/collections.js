@@ -276,7 +276,12 @@ $(document).ready(function() {
 
     equal(-Infinity, _.max({}), 'Maximum value of an empty object');
     equal(-Infinity, _.max([]), 'Maximum value of an empty array');
-    equal(_.max({'a': 'a'}), -Infinity, 'Maximum value of a non-numeric collection');
+    equal(_.max({'a': 'a'}), 'a', 'Maximum value of a non-numeric collection');
+
+    equal(_.max(['a','b','zz', 'za']), 'zz', 'Maximum value of a string collection');
+    equal(_.max(["2007-01-05", "2010-01-31", "2007-01-01"], function(s){return s;}), "2010-01-31", 'Maximum value of set of strings with comparator');
+    
+	//equal(_.max([ new Date(2001, 2, 3), new Date(2000, 10, 10)]), new Date(2001, 2, 3), 'Maximum value of a date collection');
 
     equal(299999, _.max(_.range(1,300000)), "Maximum value of a too-big array");
   });
